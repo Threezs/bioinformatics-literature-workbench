@@ -1,0 +1,28 @@
+---
+paper_id: P002
+doi: 10.1038/s41592-024-02303-9
+pmid: 38871986
+---
+
+# CellRank 2: unified fate mapping in multiview single-cell data
+
+## Takeaway
+
+CellRank 2 combines kernel views and graph-based dynamics to estimate terminal states, fate probabilities and lineage-correlated genes. It is useful when the analysis question is a transition or fate question rather than a static cluster comparison.
+
+## Input and output
+
+- Input: .h5ad with neighbors plus a justified transcriptomic, velocity or other kernel view.
+- Output: terminal states, fate probabilities, lineage drivers and audit tables.
+- Record: kernel choice, root/terminal state assumptions, random seed and data filtering.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-024-02303-9
+- Code: https://github.com/theislab/cellrank
+- Reproducibility: https://github.com/theislab/cellrank2_reproducibility
+- Turnkey entry: python/01_cellrank2_template.py.
+
+## Limitation
+
+Fate probabilities are model outputs. They require an explicit dynamical prior and should be stress-tested against alternative kernels and perturbation or time-course evidence.
