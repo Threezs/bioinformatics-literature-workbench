@@ -140,3 +140,10 @@ config/
 - **P022 / Novae**：图结构 foundation model，面向 spot/cell 空间域推断，并提供跨 gene panel、组织和技术平台的迁移、原生 batch-effect correction、空间可变基因/通路和 tissue-slide architecture 分析。
 - 入口：`python/19_novae_manifest.py`，当前状态为 `manifest-only`；运行前固定 SpatialData 元素和坐标、gene-panel coverage、batch/section split、checkpoint hash，并用 held-out section、marker 或图像标注验证。
 - 官方代码：<https://github.com/prism-oncology/novae>；模型权重不随本工作台提交。
+
+
+## 2025 多模态与空间模拟扩展
+
+- **P023 / scMultiSim**：R/Bioconductor 模拟器，使用 cell differential tree 和 GRN 生成关联的 RNA、ATAC、spliced/unspliced、空间位置和可控 batch/technical noise；适合在没有实验 ground truth 时做方法压力测试。
+- 入口：`python/20_scmultisim_manifest.py`，当前状态为 `manifest-only`；先固定 tree、GRN、互作、噪声、seed 和 benchmark split，再把模拟结果和经验数据 sanity check 分开记录。
+- 官方代码：<https://github.com/ZhangLabGT/scMultiSim>；生成数据与完整配置不提交到仓库。
