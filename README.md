@@ -89,6 +89,7 @@ config/
 | 轨迹与命运 | python/01_cellrank2_template.py | runtime-required |
 | 长读长与 DTU | R/03_bambu_long_read.R / R/04_satuRn_dtu.R | reference/transcript-input-required |
 | foundation model、空间和跨物种 | python/02–07 | manifest-only |
+| Novae 空间域和组织架构 | python/19_novae_manifest.py | manifest-only |
 
 文献阅读时，先记录输入契约、实验单位、软件/权重版本和 benchmark，再决定方法是否适合自己的小鼠 APAP、IR 或 CRLM 数据。对于 CellRank、embedding 和 niche 输出，阅读卡片要继续追踪 sample/donor 汇总和独立验证。完整的功能选择说明见 catalog 的 docs/function_map.md，近期论文综合见 literature/reviews/recent_methods_2023_2026.qmd。
 
@@ -132,3 +133,10 @@ config/
 
 - **P021 / SACCELERATOR**：把空间感知聚类方法、跨平台数据集、空间指标和专家反馈放在可扩展框架中；阅读时固定方法版本、数据集 split、坐标、ARI/NMI、CHAOS/PAS/entropy 和 expert-review protocol。
 - 入口：`python/18_saccelerator_manifest.py`，当前状态为 `manifest-only`；手工标签不是自动真值，共识结果要回到原始图像和独立生物学验证。
+
+
+## 2025–2026 空间 foundation model 扩展
+
+- **P022 / Novae**：图结构 foundation model，面向 spot/cell 空间域推断，并提供跨 gene panel、组织和技术平台的迁移、原生 batch-effect correction、空间可变基因/通路和 tissue-slide architecture 分析。
+- 入口：`python/19_novae_manifest.py`，当前状态为 `manifest-only`；运行前固定 SpatialData 元素和坐标、gene-panel coverage、batch/section split、checkpoint hash，并用 held-out section、marker 或图像标注验证。
+- 官方代码：<https://github.com/prism-oncology/novae>；模型权重不随本工作台提交。
