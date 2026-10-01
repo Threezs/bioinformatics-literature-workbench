@@ -1,0 +1,75 @@
+---
+title: "P023 — scMultiSim"
+format: gfm
+---
+
+# scMultiSim: simulation of single-cell multi-omics and spatial data
+
+- DOI: [10.1038/s41592-025-02651-0](https://doi.org/10.1038/s41592-025-02651-0)
+- PMID: 40247122
+- Official repository: <https://github.com/ZhangLabGT/scMultiSim>
+- Bioconductor package: `scMultiSim`
+- Catalog entry: `SCMULTISIM_2025`
+- Local entrypoint: `python/20_scmultisim_manifest.py`
+- Current readiness: `manifest-only`
+
+## Why this belongs in the workbench
+
+Many single-cell methods are difficult to evaluate on real data because the biological truth is partly unknown. scMultiSim is a controllable R/Bioconductor simulator that generates linked gene-expression, chromatin-accessibility, RNA-velocity and spatial-location data from a cell differential tree and gene-regulatory network. Its model can also expose cell-cell interactions, time-varying regulation, technical variation and batch effects.
+
+The project value is a pressure-testing layer: before selecting an integrator, velocity method, GRN method or spatial interaction method for real data, define which signals should be recoverable and whether the method remains calibrated when those signals or noise levels change.
+
+## Input contract
+
+Record the following before running a simulation:
+
+1. cell differential tree, population sizes and state/trajectory structure;
+2. GRN edges, weights, regulator/target conventions and whether the network changes over time;
+3. modalities to generate: RNA, ATAC, spliced/unspliced velocity and/or spatial locations;
+4. cell-cell interaction model, chromatin-to-RNA coupling and technical-noise parameters;
+5. batch-effect parameters, library-size assumptions, missingness and any train/validation/test split;
+6. random seed, package version, R/Bioconductor version and the exact configuration;
+7. the recovery metric and a negative control where the target signal is absent.
+
+The catalog helper checks the declared tree, GRN and optional spatial paths and records the simulation contract; it does not install Bioconductor or run the simulator.
+
+```bash
+python python/20_scmultisim_manifest.py \
+  --tree data/real/cell_differential_tree.tsv \
+  --grn data/real/gene_regulatory_network.tsv \
+  --modalities rna atac velocity spatial \
+  --spatial data/real/spatial_interactions.yml \
+  --batch-effects \
+  --seed 42 \
+  --output results/scmultisim_manifest.json
+```
+
+For a minimal smoke test:
+
+```bash
+python python/20_scmultisim_manifest.py \
+  --tree data/mock/cell_differential_tree.tsv \
+  --grn data/mock/gene_regulatory_network.tsv \
+  --modalities rna atac velocity \
+  --batch-effects \
+  --seed 42
+```
+
+## Baseline and validation
+
+- include a no-GRN, no-interaction or no-batch negative control when evaluating a method;
+- vary one biological or technical factor at a time before using a combined stress test;
+- split simulated cells or populations in a way that matches the intended real-data leakage risk;
+- compare recovery at the correct level: edge, gene, cell, sample, spatial neighborhood or trajectory;
+- add an empirical sanity check to confirm that the chosen parameter regime resembles the intended assay;
+- report the simulator version and the full configuration beside every benchmark table.
+
+## Interpretation boundary
+
+scMultiSim ground truth is defined by the declared generative model. A method can score well because the simulation favors its assumptions, while real tissue may contain unmodeled biology, segmentation errors or different noise. Simulation ranking supports method selection and failure analysis; it does not establish performance on the user's samples or prove a biological mechanism.
+
+## Reading output
+
+- Claim to retain: under the recorded tree, GRN, interaction, modality, noise and seed settings, a method recovers the specified target signal with the measured error and calibration.
+- Claim not to retain: a simulation leaderboard alone proves that the same method is optimal for real APAP, IR or CRLM tissue.
+- Next validation: rerun the selected method on held-out empirical data and compare against an interpretable baseline and orthogonal measurements.
