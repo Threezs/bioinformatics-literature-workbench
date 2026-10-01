@@ -124,3 +124,7 @@ config/
 
 - **P019 / SpatialData**：把不同平台的空间组学表、图像、labels、shapes、points 和坐标变换组织成可互操作的数据框架；阅读时固定元素类型、坐标系、单位、变换链、平台 reader 和存储格式。
 - 入口：`python/16_spatialdata_manifest.py`，当前状态为 `manifest-only`；它不自动修复 segmentation、registration 或组织混杂。
+## 2026 通用 Python 工具层
+
+- **P020 / scikit-bio**：覆盖序列、feature table、距离、多样性、分类、taxonomy 和系统发育操作；阅读时固定输入格式、序列/样本 ID、metadata、距离/树约定和统计设计。
+- 入口：`python/17_scikit_bio_manifest.py`，当前状态为 `manifest-only`；通用库调用不等于实验设计或生物学结论已经成立。
