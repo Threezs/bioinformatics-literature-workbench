@@ -1,0 +1,19 @@
+# Private literature and generated files
+literature/inbox/*
+literature/pdfs/*
+*.pdf
+*.zip
+*.7z
+*.sqlite
+*.db
+data/raw/*
+data/private/*
+data/processed/*
+outputs/
+_quarto/
+.Rhistory
+.Rproj.user/
+.DS_Store
+.env
+*.key
+*.pem
