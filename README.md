@@ -110,3 +110,8 @@ config/
 - **P016 / NaRMBench**：面向 nanopore direct-RNA 修饰检测工具；阅读时必须记录 RNA002/RNA004 chemistry、ground truth、是否重训练和 site-level calibration。
 
 两者都与 catalog 的 `manifest-only` 状态对齐：先登记输入契约和运行环境，再引用 benchmark 数值。
+
+## 2026 蛋白上下文扩展
+
+- **P017 / PINNACLE**：把单细胞表达、PPI 网络和 cell-type/tissue 层级接入 context-aware protein representation；阅读时固定网络版本、上下文标签、checkpoint 和 held-out target-ranking split。
+- 入口：`python/14_pinnacle_manifest.py`，当前状态为 `manifest-only`，不把配置文件误读为已完成模型推理。
