@@ -1,0 +1,28 @@
+---
+paper_id: P008
+doi: 10.1038/s41592-025-02832-x
+pmid: 41203866
+---
+
+# Monod
+
+## Takeaway
+
+Monod fits stochastic transcriptional dynamics using nascent and mature RNA measurements. It provides a biophysical route to compare transcriptional states and integrate observations when the required matched inputs exist.
+
+## Input and output
+
+- Input: matched nascent and mature count matrices plus the model configuration.
+- Output: kinetic parameters, model comparison summaries and uncertainty.
+- Record: labeling protocol, count construction, priors, optimizer and convergence diagnostics.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-025-02832-x
+- Code: https://github.com/pachterlab/monod
+- Examples: https://github.com/pachterlab/monod_examples
+- Turnkey entry: python/05_monod_template.py.
+
+## Limitation
+
+Monod is not a drop-in replacement for standard differential expression or RNA velocity. The input measurement design must support the biological model.
