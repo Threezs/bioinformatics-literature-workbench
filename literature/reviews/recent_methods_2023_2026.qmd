@@ -24,6 +24,7 @@ This review is a navigation note for the records in `data/papers.csv`. It is met
 | How can multimodal methods be compared across many tasks? | P015 | python/12_scmultibench_manifest.py |
 | How can nanopore RNA modification tools be evaluated? | P016 | python/13_narmbench_manifest.py |
 | How can cell and tissue context improve protein target prioritization? | P017 | python/14_pinnacle_manifest.py |
+| How can multimodal data support complex branching trajectories? | P018 | python/15_phlower_manifest.py |
 | How can nascent and mature RNA be modeled? | P008 | python/05_monod_template.py |
 | How can multiple species be aligned? | P007, P011 | python/06_saturn_template.py; python/07_uce_manifest.py |
 
@@ -31,7 +32,7 @@ This review is a navigation note for the records in `data/papers.csv`. It is met
 
 The catalog distinguishes `baseline-function`, `runtime-required`, `package+reference-required` and `manifest-only`. Mellon, MISO, SCMMIB, scMultiBench and NaRMBench are currently manifest-only in the personal workbench: the repository records inputs, versions and the next official command, but does not claim that a model fit or benchmark has already been reproduced.
 
-For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id` and summarize cell-level outputs before condition-level comparisons. For MISO, verify a shared spot/cell key, coordinate convention and modality-specific preprocessing. For SCMMIB/scMultiBench, select the task and split before comparing accuracy, robustness, scalability or task-specific metrics. For NaRMBench, record RNA002/RNA004 chemistry, ground-truth sites and whether models were retrained. For PINNACLE, record the PPI network version, context labels, checkpoint hash and held-out target-ranking split; a manifest is not a fitted model.
+For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id` and summarize cell-level outputs before condition-level comparisons. For MISO, verify a shared spot/cell key, coordinate convention and modality-specific preprocessing. For SCMMIB/scMultiBench, select the task and split before comparing accuracy, robustness, scalability or task-specific metrics. For NaRMBench, record RNA002/RNA004 chemistry, ground-truth sites and whether models were retrained. For PINNACLE, record the PPI network version, context labels, checkpoint hash and held-out target-ranking split; a manifest is not a fitted model. For PHLOWER, record shared cell IDs, modality preprocessing, root/direction and branch stability; an inferred tree is not lineage proof.
 
 ## Reproducibility checklist
 
