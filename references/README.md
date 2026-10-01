@@ -15,3 +15,5 @@
 - 数据集：accession、下载日期、样本数、原始数据地址、处理后数据地址、许可证。
 
 `saccelerator.bib` is a standalone citation file for P021 because the shared bibliography is preserved until a complete-file update is available.
+
+`novae.bib` is a standalone citation file for P022; keep model/checkpoint metadata separate from the shared bibliography.
