@@ -1,0 +1,28 @@
+---
+paper_id: P006
+doi: 10.1038/s41592-023-01908-w
+pmid: 37308696
+---
+
+# Bambu
+
+## Takeaway
+
+Bambu performs context-aware transcript discovery and quantification from long-read RNA-seq alignments, including known and novel transcript evidence.
+
+## Input and output
+
+- Input: aligned BAM files, transcript annotation and reference genome FASTA.
+- Output: transcript and gene count matrices, discovered transcript models and QC.
+- Record: genome/annotation release, aligner, strandedness and filtering thresholds.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-023-01908-w
+- Code: https://github.com/GoekeLab/bambu
+- Pipeline companion: https://github.com/GoekeLab/bambu-pipe
+- Turnkey entry: R/03_bambu_long_read.R.
+
+## Limitation
+
+Transcript discovery is sensitive to alignment and reference preparation. Keep known and novel transcript calls separate when interpreting biological claims.
