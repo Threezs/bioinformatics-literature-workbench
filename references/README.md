@@ -17,3 +17,5 @@
 `saccelerator.bib` is a standalone citation file for P021 because the shared bibliography is preserved until a complete-file update is available.
 
 `novae.bib` is a standalone citation file for P022; keep model/checkpoint metadata separate from the shared bibliography.
+
+`scmultisim.bib` is a standalone citation file for P023; keep simulation configuration and generated data outside the shared bibliography.
