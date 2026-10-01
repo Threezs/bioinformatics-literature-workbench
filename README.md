@@ -115,3 +115,8 @@ config/
 
 - **P017 / PINNACLE**：把单细胞表达、PPI 网络和 cell-type/tissue 层级接入 context-aware protein representation；阅读时固定网络版本、上下文标签、checkpoint 和 held-out target-ranking split。
 - 入口：`python/14_pinnacle_manifest.py`，当前状态为 `manifest-only`，不把配置文件误读为已完成模型推理。
+
+## 2025 多模态轨迹扩展
+
+- **P018 / PHLOWER**：用多模态单细胞数据和 Hodge 分解处理复杂、多分支分化轨迹；阅读时固定共享 cell ID、root/direction、模态预处理和 branch stability。
+- 入口：`python/15_phlower_manifest.py`，当前状态为 `manifest-only`；分支树和候选调控因子必须配独立验证。
