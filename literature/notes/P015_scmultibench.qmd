@@ -1,0 +1,32 @@
+---
+title: "P015 — scMultiBench multi-task integration benchmark"
+format: gfm
+---
+
+## Primary record
+
+- DOI: https://doi.org/10.1038/s41592-025-02856-3
+- PMID: 41083898
+- Article: *Multitask benchmarking of single-cell multimodal omics integration methods*
+- Official code: https://github.com/PYangLab/scMultiBench
+- Zenodo: https://doi.org/10.5281/zenodo.15385334
+- Catalog entry: `SCMULTIBENCH_2025`
+- Local entry: `python/12_scmultibench_manifest.py`
+
+## What problem does it address?
+
+scMultiBench evaluates multimodal integration across vertical, diagonal, mosaic and cross structures and separates common tasks such as dimensionality reduction, batch correction, clustering, classification, imputation, feature selection and spatial registration.
+
+## Minimal input contract
+
+1. Dataset manifest with explicit modalities, pairing structure, task and split.
+2. The exact preprocessing, method configuration and resource record used for each task.
+3. Task-level metrics rather than one pooled rank.
+
+## Interpretation boundary
+
+A method can be strong for one task/modality and weak for another. Benchmark output guides candidate selection; it does not replace validation on the user's platform and biological replicates.
+
+## Reproduction status
+
+The personal catalog records the task list and dataset manifest only. Run the official scMultiBench pipeline in its pinned environment before quoting metric values.

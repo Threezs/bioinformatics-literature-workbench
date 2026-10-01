@@ -21,14 +21,16 @@ This review is a navigation note for the records in `data/papers.csv`. It is met
 | How can spatial context be transferred? | P009 | python/04_nicheformer_template.py |
 | How can aligned multimodal spatial omics be integrated? | P013 | python/10_miso_manifest.py |
 | How can multimodal integration methods be compared? | P014 | python/11_scmmib_manifest.py |
+| How can multimodal methods be compared across many tasks? | P015 | python/12_scmultibench_manifest.py |
+| How can nanopore RNA modification tools be evaluated? | P016 | python/13_narmbench_manifest.py |
 | How can nascent and mature RNA be modeled? | P008 | python/05_monod_template.py |
 | How can multiple species be aligned? | P007, P011 | python/06_saturn_template.py; python/07_uce_manifest.py |
 
 ## Reading and execution status
 
-The catalog distinguishes `baseline-function`, `runtime-required`, `package+reference-required` and `manifest-only`. Mellon, MISO and SCMMIB are currently manifest-only in the personal workbench: the repository records inputs, versions and the next official command, but does not claim that a model fit or benchmark has already been reproduced.
+The catalog distinguishes `baseline-function`, `runtime-required`, `package+reference-required` and `manifest-only`. Mellon, MISO, SCMMIB, scMultiBench and NaRMBench are currently manifest-only in the personal workbench: the repository records inputs, versions and the next official command, but does not claim that a model fit or benchmark has already been reproduced.
 
-For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id` and summarize cell-level outputs before condition-level comparisons. For MISO, verify a shared spot/cell key, coordinate convention and modality-specific preprocessing. For SCMMIB, select the paired, unpaired or mosaic task before comparing accuracy, robustness and scalability.
+For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id` and summarize cell-level outputs before condition-level comparisons. For MISO, verify a shared spot/cell key, coordinate convention and modality-specific preprocessing. For SCMMIB/scMultiBench, select the task and split before comparing accuracy, robustness, scalability or task-specific metrics. For NaRMBench, record RNA002/RNA004 chemistry, ground-truth sites and whether models were retrained.
 
 ## Reproducibility checklist
 

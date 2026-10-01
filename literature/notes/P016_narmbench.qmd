@@ -1,0 +1,31 @@
+---
+title: "P016 — NaRMBench nanopore RNA modification benchmark"
+format: gfm
+---
+
+## Primary record
+
+- DOI: https://doi.org/10.1038/s41592-025-02974-y
+- PMID: 41372661
+- Article: *Systematic evaluation of computational tools for multitype RNA modification detection using nanopore direct RNA sequencing*
+- Official code: https://github.com/JiejunShi/NaRMBench
+- Catalog entry: `NARMBENCH_2026`
+- Local entry: `python/13_narmbench_manifest.py`
+
+## What problem does it address?
+
+NaRMBench provides preprocessing, retraining and evaluation routes for nanopore direct-RNA modification detection, spanning multiple modification types and RNA sequencing chemistries.
+
+## Minimal input contract
+
+1. Direct-RNA reads and a fixed reference/transcript model.
+2. RNA002/RNA004 chemistry, basecalling/alignment versions and ground-truth sites.
+3. Explicit retraining status and site-level detection, quantification and biological-validity metrics.
+
+## Interpretation boundary
+
+Chemistry- and training-dependent performance, especially for non-m6A modifications, should not be generalized to every sample. Modification calls require calibration and independent biological validation.
+
+## Reproduction status
+
+The personal catalog only checks the manifest inputs. It does not run basecalling, retraining, evaluation or downstream figure generation.

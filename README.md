@@ -102,3 +102,11 @@ config/
 | SCMMIB (P014) | paired/unpaired/mosaic 整合 benchmark | 当前任务和评价指标是什么，是否把 benchmark 排名误读成普适结论？ |
 
 以上条目与 `catalog.csv` 的 `execution_mode` 对齐；manifest 生成只说明输入契约已记录，不等于官方模型已完成推理。
+
+
+## 2026 评估与长读长扩展
+
+- **P015 / scMultiBench**：把多模态整合拆成 reduction、batch correction、clustering、classification、imputation、feature selection 和 spatial registration 任务；阅读时必须记录任务、模态结构和 split。
+- **P016 / NaRMBench**：面向 nanopore direct-RNA 修饰检测工具；阅读时必须记录 RNA002/RNA004 chemistry、ground truth、是否重训练和 site-level calibration。
+
+两者都与 catalog 的 `manifest-only` 状态对齐：先登记输入契约和运行环境，再引用 benchmark 数值。
