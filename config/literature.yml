@@ -1,0 +1,25 @@
+project_name: bioinformatics-literature-workbench
+default_language: zh-CN
+citation_key_pattern: author_year_firstword
+required_paper_fields:
+  - paper_id
+  - title
+  - year
+  - species
+  - model
+  - status
+allowed_status:
+  - inbox
+  - reading
+  - read
+  - extracting
+  - synthesized
+  - archived
+confidence_levels:
+  - low
+  - moderate
+  - high
+protected_paths:
+  - literature/pdfs
+  - data/raw
+  - data/private
