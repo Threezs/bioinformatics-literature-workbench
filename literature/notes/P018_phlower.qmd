@@ -1,0 +1,53 @@
+---
+paper_id: P018
+title: "PHLOWER leverages single-cell multimodal data to infer complex, multi-branching cell differentiation trajectories"
+doi: 10.1038/s41592-025-02870-5
+pmid: 41131366
+journal: Nature Methods
+year: 2025
+first_author: Mingbo Cheng
+official_repo: https://github.com/CostaLab/phlower
+execution_mode: manifest-only
+---
+
+# P018 — PHLOWER
+
+## 一句话
+
+PHLOWER（decomposition of the Hodge Laplacian for inferring trajectories from flows of cell differentiation）把多模态单细胞数据表示为 simplicial complexes，利用 Hodge 分解得到 edge-flow 和 trajectory embeddings，用于复杂、多分支分化树推断。
+
+## 论文中值得记录的事实
+
+- 论文发表于 2025 年 10 月 23 日，Nature Methods 22:2328–2336，DOI 为 `10.1038/s41592-025-02870-5`。
+- 论文通过多分支 benchmark，以及肾类器官的多模态和空间单细胞数据评估复杂树推断，并用于候选转录调控因子发现。
+- 官方代码仓库为 <https://github.com/CostaLab/phlower>，文档入口为 <https://phlower.readthedocs.io>。
+
+## 输入契约
+
+1. 至少两种模态，所有模态必须共享 cell ID；记录 RNA/ATAC/空间数据的预处理、feature selection 和缺失细胞处理。
+2. cell metadata：保留 sample/donor、condition、cell type、batch、organism 和可选 root/terminal labels。
+3. 方向审计：说明 root/progenitor 选择、是否有时间/velocity/lineage 先验，以及无向图如何定向。
+4. 分支稳定性：保存不同邻居/过滤/模态权重下的树结构和 branch assignment。
+
+仓库中的 `python/15_phlower_manifest.py` 只检查路径、模态数、root/terminal 参数并写出 manifest；它不会自动确定谱系方向或启动官方推理。
+
+## 最小可执行路径
+
+```bash
+python python/15_phlower_manifest.py \
+  --modalities data/real/rna.h5ad data/real/atac.h5ad \
+  --cell-metadata data/real/cell_metadata.csv \
+  --root-label progenitor \
+  --task both \
+  --output results/phlower_manifest.json
+```
+
+## 必须配的 baseline 和评价
+
+- 与 CellRank、图拉普拉斯/扩散图和其他 trajectory baseline 比较 branch recovery、tree similarity、pseudotime/edge-flow 稳定性。
+- 保持 modality-specific cell ID 和同一 sample/donor 分层；树结构和 candidate regulator 需要 held-out 或独立数据验证。
+- 对 APAP/IR 或 CRLM 数据，不能因为模型产生多分支树就直接宣称细胞谱系转换；应结合时间序列、扰动或空间证据。
+
+## 解释边界
+
+PHLOWER 的 tree、flow embedding 和转录因子分数是计算假设。没有 root/direction、跨模态对齐和独立验证时，不能把 branch 顺序写成真实谱系、把 regulator score 写成因果调控。
