@@ -1,0 +1,27 @@
+---
+paper_id: P010
+doi: 10.12688/f1000research.51749.1
+---
+
+# satuRn differential transcript usage
+
+## Takeaway
+
+satuRn fits scalable quasi-binomial models for transcript usage in bulk and single-cell RNA-seq. It complements gene-level differential expression when isoform composition is the scientific question.
+
+## Input and output
+
+- Input: transcript counts, transcript-to-gene mapping, sample metadata and biological replicates.
+- Output: transcript-level DTU statistics, adjusted p-values and usage summaries.
+- Record: transcript filtering, design matrix, contrasts, package version and transcript annotation.
+
+## Official material
+
+- Paper: https://doi.org/10.12688/f1000research.51749.1
+- Code: https://github.com/statOmics/satuRn
+- Reproduction: https://github.com/statOmics/satuRnPaper
+- Turnkey entry: R/04_satuRn_dtu.R.
+
+## Limitation
+
+DTU needs enough biological replication and informative isoforms. A significant transcript-level result should be checked against gene-level expression and annotation quality.
