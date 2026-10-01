@@ -1,0 +1,69 @@
+---
+title: "P019 — SpatialData"
+format: gfm
+---
+
+# SpatialData: an open and universal data framework for spatial omics
+
+- DOI: [10.1038/s41592-024-02212-x](https://doi.org/10.1038/s41592-024-02212-x)
+- Official repository: <https://github.com/scverse/spatialdata>
+- Catalog entry: `SPATIALDATA_2025`
+- Local entrypoint: `python/16_spatialdata_manifest.py`
+- Current readiness: `manifest-only`
+
+## Why this belongs in the workbench
+
+Spatial omics analyses often fail before the biological model is reached: platform exports use different element names, coordinate systems, units, image conventions and storage formats. SpatialData provides a common data model and interoperable access layer for tables, images, labels, shapes, points and coordinate transformations. Treat it as a reproducibility and interoperability layer that comes before niche prediction, registration-aware integration or neighborhood statistics.
+
+## Input contract
+
+The minimum audit should record:
+
+1. the source platform and reader version;
+2. the element types and names present in the store;
+3. the coordinate system and physical units for every spatial element;
+4. the complete transform chain between image, tissue and analysis coordinates;
+5. the table-to-element linkage and cell/spot identifiers;
+6. the serialization format, store path and input hash.
+
+The catalog manifest accepts one or more dataset paths and records expected elements, coordinate system and platform. It deliberately does not download a reader, rewrite a Zarr store or silently alter coordinates.
+
+```bash
+python python/16_spatialdata_manifest.py \
+  --datasets data/real/spatialdata.zarr data/real/segmentation.zarr \
+  --elements table image labels shapes \
+  --coordinate-system tissue \
+  --platform Xenium \
+  --output results/spatialdata_manifest.json
+```
+
+For the smallest smoke test:
+
+```bash
+python python/16_spatialdata_manifest.py \
+  --datasets data/mock/spatialdata_table.csv \
+  --elements table points \
+  --coordinate-system tissue \
+  --platform synthetic
+```
+
+## Baseline and validation
+
+Before any downstream model, compare the imported object with the platform-native representation:
+
+- count cells/spots and compare identifiers;
+- inspect coordinate ranges, units and transform direction;
+- verify that images, labels and shapes overlap the intended tissue extent;
+- check missing values, duplicated IDs and table-to-element links;
+- render one small region and preserve the before/after image;
+- only then pass the object to Nicheformer, MISO or a classical spatial neighborhood workflow.
+
+## Interpretation boundary
+
+SpatialData can make a data object portable and auditable. It cannot establish that segmentation is correct, that registration is biologically meaningful, or that a spatial neighborhood implies signaling. Keep these as separate evidence layers in the project notebook.
+
+## Reading output
+
+- Claim to retain: a documented, interoperable spatial data object can be reconstructed from the recorded elements, transforms and versions.
+- Claim not to retain: a successful read/write or coordinate transform is evidence of a biological mechanism.
+- Next validation: compare one tissue section against the platform-native viewer and a manually inspected segmentation/registration subset.
