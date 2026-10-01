@@ -1,0 +1,28 @@
+---
+paper_id: P007
+doi: 10.1038/s41592-024-02191-z
+pmid: 38366243
+---
+
+# SATURN
+
+## Takeaway
+
+SATURN couples scRNA-seq with protein-language-model embeddings to create shared cell embeddings across species, supporting cross-species annotation transfer and macrogene analysis.
+
+## Input and output
+
+- Input: species-specific AnnData objects, cell labels and protein embeddings.
+- Output: universal cell embeddings, cross-species mapping and macrogene-level comparisons.
+- Record: gene identifiers, protein coverage, species labels, model weights and training/evaluation settings.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-024-02191-z
+- Code: https://github.com/snap-stanford/SATURN
+- Reproducibility archive: https://doi.org/10.5281/zenodo.10258201
+- Turnkey entry: python/06_saturn_template.py.
+
+## Limitation
+
+Cross-species similarity can reflect annotation and representation choices. Validate with conserved markers, held-out labels and species-aware QC.
