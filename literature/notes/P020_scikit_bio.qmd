@@ -1,0 +1,66 @@
+---
+title: "P020 — scikit-bio"
+format: gfm
+---
+
+# Scikit-bio: a fundamental Python library for biological omic data analysis
+
+- DOI: [10.1038/s41592-025-02981-z](https://doi.org/10.1038/s41592-025-02981-z)
+- Official repository: <https://github.com/scikit-bio/scikit-bio>
+- Catalog entry: `SCIKITBIO_2026`
+- Local entrypoint: `python/17_scikit_bio_manifest.py`
+- Current readiness: `manifest-only`
+
+## Why this belongs in the workbench
+
+A research project often mixes sequence files, feature tables, metadata, distances, taxonomies and phylogenetic trees. scikit-bio offers a common Python layer for biological data structures and algorithms, which makes it useful as a reproducible utility layer alongside the R-first methods in this collection.
+
+It should be treated as a toolkit, not as a single end-to-end statistical method. The scientific question, experimental unit, null model and assay-specific preprocessing still belong to the project.
+
+## Input contract
+
+Record the following before choosing an API:
+
+1. operation family: sequence, table, distance, diversity, taxonomy or phylogeny;
+2. file formats and parser versions (FASTA/FASTQ, BIOM/TSV, Newick or other);
+3. sequence, feature and sample identifiers and their join rules;
+4. metadata fields, missingness and biological replicate;
+5. distance metric, tree rooting and branch-length conventions where relevant;
+6. statistical design, covariates, permutations and multiple-testing policy.
+
+The catalog manifest records these choices without importing a package or silently converting formats.
+
+```bash
+python python/17_scikit_bio_manifest.py \
+  --inputs data/real/reads.fasta data/real/metadata.tsv \
+  --operation sequence \
+  --format FASTA \
+  --output results/scikit_bio_manifest.json
+```
+
+For a minimal smoke test:
+
+```bash
+python python/17_scikit_bio_manifest.py \
+  --inputs data/mock/narmbench_reference.fa \
+  --operation sequence \
+  --format FASTA
+```
+
+## Baseline and validation
+
+- validate identifiers and metadata joins before computing distances or diversity;
+- compare the selected operation with an assay-appropriate baseline;
+- keep sample/donor as the unit of inference rather than treating sequences or features as independent biological replicates;
+- preserve parser settings, distance/tree conventions, permutations, random seeds and software versions;
+- inspect one small known example before scaling to the full dataset.
+
+## Interpretation boundary
+
+scikit-bio can make an operation and its data representation reproducible. It does not select the best assay, correct batch effects automatically, establish causality or turn a distance/phylogeny result into a mechanism.
+
+## Reading output
+
+- Claim to retain: the chosen operation can be reconstructed from the recorded formats, identifiers, metadata and parameters.
+- Claim not to retain: a library result alone proves a biological mechanism or validates an experimental design.
+- Next validation: rerun an assay-specific baseline and confirm the result at the correct sample/replicate level.
