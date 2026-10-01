@@ -1,0 +1,27 @@
+---
+paper_id: P001
+doi: 10.1038/s41592-023-01814-1
+pmid: 37037999
+---
+
+# Comparison of transformations for single-cell RNA-seq data
+
+## Takeaway
+
+The transformation is part of the statistical model: log1p-CPM, shifted log and residual-style transforms can change distances, variance structure and downstream embeddings. Use the R panel in the methods catalog to compare choices on the intended assay.
+
+## Input and output
+
+- Input: integer gene × cell counts with documented library sizes.
+- Output: transformed matrix plus PCA-ready features and a method label.
+- Record: filtering, size-factor rule, transform parameters and the downstream model.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-023-01814-1
+- Reproducibility archive: https://doi.org/10.5281/zenodo.7504146
+- Turnkey entry: R/01_single_cell_transformations.R in the methods catalog.
+
+## Limitation
+
+This entry is a transparent baseline panel, not a claim that one transform is universally optimal. Confirm performance with the biological replicate structure and the actual downstream task.
