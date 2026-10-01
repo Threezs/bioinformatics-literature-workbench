@@ -1,0 +1,54 @@
+---
+paper_id: P017
+title: "Contextual AI models for single-cell protein biology"
+doi: 10.1038/s41592-024-02341-3
+pmid: 39039335
+journal: Nature Methods
+year: 2024
+first_author: Michelle M. Li
+official_repo: https://github.com/mims-harvard/PINNACLE
+execution_mode: manifest-only
+---
+
+# P017 — PINNACLE
+
+## 一句话
+
+PINNACLE（Protein Network-based Algorithm for Contextual Learning）用单细胞表达、蛋白互作网络以及 cell-type/tissue 组织关系学习 context-aware protein representations。它适合把“哪个蛋白在什么细胞/组织背景下值得优先验证”变成可审计的候选排序问题。
+
+## 论文中值得记录的事实
+
+- 论文发表于 2024 年 7 月，Nature Methods 21:1546–1557，DOI 为 `10.1038/s41592-024-02341-3`。
+- 作者在多器官人类单细胞图谱上构建上下文化 PPI 网络，报告了 156 个 cell-type contexts、24 个组织和 394,760 个 protein representations。
+- 论文展示了组织层级的 zero-shot retrieval、蛋白互作/结构表示增强，以及面向 RA/IBD 的细胞类型特异靶点优先级任务。
+- 官方代码、示例和数据入口：<https://github.com/mims-harvard/PINNACLE>；论文还提供项目网站和 figshare 数据。
+
+## 输入契约
+
+1. expression/AnnData：用于确定细胞类型上下文或激活基因，记录物种、组织、细胞类型标签和基因 ID 版本。
+2. PPI network：至少记录来源、版本、边定义、置信度阈值和是否取最大连通分量。
+3. context metadata：明确 cell-type、tissue、organism 和样本/供体关系，避免把同一 donor 的细胞当成独立外部验证。
+4. checkpoint：记录官方 commit/tag、下载地址、SHA-256、许可证和显存需求。
+
+仓库中的 `python/14_pinnacle_manifest.py` 只检查这些路径并写出 manifest；它不会下载权重、网络或启动训练。
+
+## 最小可执行路径
+
+```bash
+python python/14_pinnacle_manifest.py \
+  --expression data/real/your_dataset.h5ad \
+  --ppi-network data/real/protein_network.tsv \
+  --context-metadata data/real/context_metadata.csv \
+  --task target_prioritization \
+  --output results/pinnacle_manifest.json
+```
+
+## 必须配的 baseline 和评价
+
+- 与 PPI degree、random walk、GAT 或任务特异的经典排序模型比较，保持相同的候选蛋白、context split 和标签定义。
+- 目标排序至少报告 held-out APR@K/Precision@K/Recall@K，并按 cell type/tissue 分层；表示学习任务需预先定义下游任务而非只展示 UMAP。
+- 如果研究对象是小鼠 APAP/IR 或 CRLM，先做 mouse-human ortholog audit，再决定是否迁移人源网络或 checkpoint。
+
+## 解释边界
+
+PINNACLE 的 embedding 和 prioritization score 是候选假设。它们不能单独证明蛋白的因果功能、药物疗效、跨组织迁移性或临床可用性；必须回到独立数据、扰动实验、结构/互作验证或体内外实验。
