@@ -50,3 +50,4 @@ For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id
 - Evidence notebook: https://github.com/Threezs/research-evidence-notebook
 | How can spatial omics elements and coordinate systems stay interoperable? | P019 | python/16_spatialdata_manifest.py |
 SpatialData is an infrastructure layer rather than a biological inference model. Before Nicheformer, MISO or a neighborhood analysis, record the element types (table/image/labels/shapes/points), coordinate systems, units, transform chain, platform and serialization format. Interoperability reduces cross-platform I/O and coordinate mistakes, but it does not repair segmentation, registration or tissue-level confounding.
+| How can general sequence, table, distance, diversity, taxonomy and phylogeny operations be made reproducible? | P020 | python/17_scikit_bio_manifest.py |
