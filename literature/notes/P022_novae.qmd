@@ -1,0 +1,70 @@
+---
+title: "P022 — Novae"
+format: gfm
+---
+
+# Novae: a graph-based foundation model for spatial transcriptomics data
+
+- DOI: [10.1038/s41592-025-02899-6](https://doi.org/10.1038/s41592-025-02899-6)
+- PMID: 41372623
+- Official repository: <https://github.com/prism-oncology/novae>
+- Catalog entry: `NOVAE_2025`
+- Local entrypoint: `python/19_novae_manifest.py`
+- Current readiness: `manifest-only`
+
+## Why this belongs in the workbench
+
+Spatial projects often mix spot-level and single-cell measurements, different gene panels, tissue sections and acquisition technologies. Novae is a graph-based foundation model designed for spatial domain assignments at both single-cell and spot resolution. The official repository also describes native batch-effect correction, spatially variable gene and pathway analysis, and tissue-slide architecture analysis.
+
+The useful project contribution is a structured route for domain discovery and transfer. It should be paired with SpatialData element/coordinate auditing and with a transparent neighborhood or marker baseline. A model-derived domain map is not automatically a verified anatomical boundary.
+
+## Input contract
+
+Record the following before loading a checkpoint:
+
+1. SpatialData/AnnData/table elements, spot or cell identifiers, coordinates and units;
+2. platform, tissue, section identifiers and the gene panel for every input;
+3. batch key, train/validation/held-out section split and any image/segmentation linkage;
+4. Novae checkpoint name, source URL, commit/tag, hash, license and model version;
+5. preprocessing, library-size/QC filters, neighborhood construction and random seed;
+6. orthogonal marker, image annotation or independent molecular evidence used for validation.
+
+The catalog helper only checks that declared paths exist and writes a manifest; it does not download weights or run inference.
+
+```bash
+python python/19_novae_manifest.py \
+  --inputs data/real/spatialdata.zarr data/real/spot_metadata.csv \
+  --task domain_inference \
+  --checkpoint models/novae_checkpoint.pt \
+  --gene-panel data/real/gene_panel.tsv \
+  --platform Visium \
+  --output results/novae_manifest.json
+```
+
+For a minimal smoke test:
+
+```bash
+python python/19_novae_manifest.py \
+  --inputs data/mock/spatialdata_table.csv \
+  --task domain_inference \
+  --platform synthetic
+```
+
+## Baseline and validation
+
+- compare domain assignments with a spatial-neighborhood or graph-clustering baseline;
+- report transfer separately by platform, tissue, gene panel and section rather than one pooled score;
+- measure sensitivity to coordinate transforms, neighborhood radius, filtering and gene-panel overlap;
+- evaluate held-out sections and, where possible, marker or image annotations;
+- keep segmentation/registration QC and batch correction diagnostics as separate evidence fields;
+- run SVG/pathway summaries after domain stability is established, not as a substitute for it.
+
+## Interpretation boundary
+
+Novae representations and domain assignments summarize patterns in the recorded spatial graph. Spatially variable genes, pathway scores or tissue-architecture summaries can be affected by panel coverage, registration, batch, resolution and tissue composition. They do not by themselves establish a causal cell-cell interaction, a stable anatomical boundary or a therapeutic mechanism.
+
+## Reading output
+
+- Claim to retain: under the fixed platform, panel, checkpoint and validation split, Novae produces a reproducible pattern of spatial domains and associated features.
+- Claim not to retain: a high-confidence domain or pathway score is automatically a ground-truth tissue mechanism.
+- Next validation: inspect held-out sections with tissue experts, marker panels and independent imaging or perturbation evidence.
