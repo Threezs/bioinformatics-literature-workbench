@@ -1,0 +1,27 @@
+---
+paper_id: P003
+doi: 10.1038/s41592-024-02201-0
+pmid: 38409223
+---
+
+# scGPT
+
+## Takeaway
+
+scGPT uses gene-expression tokenization and a pretrained transformer for tasks such as annotation, integration and perturbation prediction. The catalog stores a dependency-light manifest so checkpoints can be pinned before a GPU run.
+
+## Input and output
+
+- Input: normalized/tokenized single-cell expression plus a compatible checkpoint.
+- Output: embeddings or task-specific predictions with model metadata.
+- Record: checkpoint URL, version, SHA256, license, preprocessing and a classical baseline.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-024-02201-0
+- Code: https://github.com/bowang-lab/scGPT
+- Turnkey entry: python/02_scgpt_embedding_template.py.
+
+## Limitation
+
+Foundation-model performance is task and dataset dependent. Do not treat a checkpoint result as a replacement for a transparent baseline or independent validation.
