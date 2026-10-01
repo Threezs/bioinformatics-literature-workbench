@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Bioinformatics Literature Workbench"
+message: "Please cite this repository when reusing its templates."
+type: software
+authors:
+  - family-names: Zhao
+    given-names: Zize
+    orcid: ""
+repository-code: "https://github.com/Threezs/bioinformatics-literature-workbench"
+license: "proprietary"
+version: "0.1.0"
