@@ -1,0 +1,28 @@
+---
+paper_id: P011
+doi: 10.1038/s41586-026-10689-z
+pmid: 42420460
+---
+
+# Universal cell embedding (UCE)
+
+## Takeaway
+
+UCE learns a unified latent space for cells across tissues and species and can embed new data without dataset-specific fine-tuning. It is a useful recent zero-shot representation branch for annotation and cross-species exploration.
+
+## Input and output
+
+- Input: single-cell expression in AnnData-compatible form and a pinned UCE checkpoint.
+- Output: zero-shot cell embeddings and downstream label-transfer or classifier inputs.
+- Record: gene identifiers, protein-token vocabulary coverage, species, tissue, checkpoint and hardware.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41586-026-10689-z
+- PubMed: https://pubmed.ncbi.nlm.nih.gov/42420460/
+- Code: https://github.com/snap-stanford/UCE
+- Turnkey entry: python/07_uce_manifest.py in the methods catalog.
+
+## Limitation
+
+Zero-shot embeddings are still model outputs. Preserve the original expression analysis and compare marker-based or classical embedding baselines before using UCE to support a biological claim.
