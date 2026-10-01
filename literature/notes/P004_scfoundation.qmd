@@ -1,0 +1,27 @@
+---
+paper_id: P004
+doi: 10.1038/s41592-024-02305-7
+pmid: 38844628
+---
+
+# Large-scale foundation model on single-cell transcriptomics
+
+## Takeaway
+
+scFoundation pretrains a large model over human single-cell profiles and exposes embeddings and task-specific workflows. It is best treated as an auditable optional branch after a reproducible count-matrix baseline is complete.
+
+## Input and output
+
+- Input: expression matrix or .h5ad plus the exact model weights/API version.
+- Output: embeddings, enhancement or downstream task predictions.
+- Record: gene vocabulary, checkpoint, hardware, preprocessing and baseline metrics.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-024-02305-7
+- Code and weights/API: https://github.com/biomap-research/scFoundation
+- Turnkey entry: python/03_scFoundation_embedding_template.py.
+
+## Limitation
+
+Large memory and model-license constraints can make this unsuitable for routine analysis. Preserve the classical analysis as the primary interpretable result.
