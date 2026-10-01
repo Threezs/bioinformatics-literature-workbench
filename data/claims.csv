@@ -1,0 +1,2 @@
+paper_id,claim_id,claim,figure_or_table,model,evidence_type,confidence,replication_status,source_location,notes,relevance_to_projects
+P001,P001-C01,Replace this example with one testable statement,Fig. 2,mouse acute liver injury,observational,low,unknown,p. 5,Example only,APAP
