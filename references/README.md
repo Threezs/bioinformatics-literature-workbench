@@ -13,3 +13,5 @@
 - 文献：DOI、PMID、标题、年份、期刊、物种、模型、组织、assay、样本设计、accession。
 - 证据：原文结论、证据类型、图表、模型、可信度、重复验证状态。
 - 数据集：accession、下载日期、样本数、原始数据地址、处理后数据地址、许可证。
+
+`saccelerator.bib` is a standalone citation file for P021 because the shared bibliography is preserved until a complete-file update is available.
