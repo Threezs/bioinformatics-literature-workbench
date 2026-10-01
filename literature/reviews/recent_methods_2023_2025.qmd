@@ -1,37 +1,48 @@
 ---
-title: "Recent bioinformatics methods: 2023–2025"
+title: "Recent bioinformatics methods: 2023–2026"
 format: gfm
 ---
 
-# Recent bioinformatics methods: 2023–2025
+# Recent bioinformatics methods: 2023–2026
 
-This review is a navigation note for the records in data/papers.csv. It is intentionally method-centered: every claim should be checked against the primary paper, its official repository and the input contract in the methods catalog.
+This is a function-first navigation note for the records in `data/papers.csv`. Each method must be judged against its primary paper, official repository, input contract, execution mode and evidence level.
 
-## Selection map
+## 按科研功能选择
 
-| Question | Method record | Practical entry |
-|---|---|---|
-| How should single-cell counts be transformed? | P001 | R/01_single_cell_transformations.R |
-| How many features should be used for integration/query? | P005 | R/02_feature_selection_benchmark.R |
-| How should fate and trajectory probabilities be modeled? | P002 | python/01_cellrank2_template.py |
-| How can long reads improve transcript discovery? | P006 | R/03_bambu_long_read.R |
-| When is transcript usage the endpoint? | P010 | R/04_satuRn_dtu.R |
-| How can a model encode cell state? | P003, P004 | python/02_scgpt_embedding_template.py; python/03_scFoundation_embedding_template.py |
-| How can spatial context be transferred? | P009 | python/04_nicheformer_template.py |
-| How can nascent and mature RNA be modeled? | P008 | python/05_monod_template.py |
-| How can multiple species be aligned? | P007 | python/06_saturn_template.py |\n| How can new cells be embedded without fine-tuning? | P011 | python/07_uce_manifest.py |
+| 功能 | 论文记录 | 最小输入 | 入口 | 当前执行状态 |
+|---|---|---|---|---|
+| 单细胞表达变换 | P001 | gene × cell raw counts | `R/01_single_cell_transformations.R` | baseline-function |
+| 特征排序、正式 HVG 和 atlas/query | P005 | counts + batch/labels | `R/02_feature_selection_benchmark.R` | baseline + benchmark integration |
+| 轨迹、命运和终末状态 | P002 | h5ad + kNN + pseudotime/velocity | `python/01_cellrank2_template.py` | runtime-required |
+| 长读长新转录本 | P006 | genome-aligned BAM + GTF + FASTA | `R/03_bambu_long_read.R` | reference-required |
+| transcript usage / DTU | P010 | transcript counts + tx2gene + replicates | `R/04_satuRn_dtu.R` | transcript-input-required |
+| foundation model embedding/注释 | P003, P004 | h5ad/counts + pinned checkpoint | `python/02_scgpt_embedding_template.py`; `python/03_scFoundation_embedding_template.py` | manifest-only |
+| 空间 niche/context | P009 | spatial/context data + checkpoint | `python/04_nicheformer_template.py` | manifest-only |
+| nascent/mature 转录动力学 | P008 | matched nascent/mature data + official config | `python/05_monod_template.py` | manifest-only |
+| 跨物种整合 | P007 | species-specific h5ad + protein embeddings | `python/06_saturn_template.py` | manifest-only |
+| 零样本 embedding | P011 | h5ad + UCE checkpoint/vocabulary | `python/07_uce_manifest.py` | manifest-only |
 
-## Reproducibility checklist
+完整的功能映射和字段见 [nature-methods-bioinformatics-catalog](https://github.com/Threezs/nature-methods-bioinformatics-catalog) 的 `docs/function_map.md`、`catalog.csv` 和 `data/function_index.csv`。
 
-1. Freeze the paper DOI, official repository, commit/tag and checkpoint URL.
-2. Record the organism, tissue, assay, experimental unit and count convention.
-3. Test the smallest mock input before using a full dataset.
-4. Preserve the complete output table, software versions, command line and input hashes.
-5. Compare foundation-model outputs with an interpretable baseline.
-6. Keep exploratory predictions separate from claims supported by independent biological evidence.
+## 四种执行状态
 
-## Project links
+- **smoke-tested：** 依赖轻的输入审计、CSV/metadata 和 CLI 检查通过。
+- **baseline-function：** 可解释的 R/Python 函数可以在匹配环境中运行。
+- **runtime/integration-required：** 需要真实 AnnData、BAM、GTF、FASTA、transcript count 或 biological replicate。
+- **manifest-only：** 当前入口只固定输入、checkpoint、版本和下一步；不声称已经完成模型推理。
 
-- Methods catalog: https://github.com/Threezs/nature-methods-bioinformatics-catalog
-- RNA-seq template: https://github.com/Threezs/rnaseq-analysis-template
-- Evidence notebook: https://github.com/Threezs/research-evidence-notebook
+## 读论文时要记录什么
+
+1. 研究问题和实验单位是 gene、cell、sample、donor 还是 tissue。
+2. 输入是 raw count、normalized layer、velocity layer、BAM 还是外部 checkpoint。
+3. benchmark 的任务、数据集、baseline 和评价指标是什么。
+4. 官方代码、release/tag、权重地址、许可和需要的硬件。
+5. 输出是统计量、概率、embedding、预测还是候选假设。
+6. 哪些结果需要按 sample/donor 汇总，哪些需要独立实验验证。
+
+## 针对 APAP/IR/CRLM 的解释边界
+
+CellRank、embedding、niche prediction 和细胞比例首先是细胞级输出。比较 APAP/IR 条件时，必须保留 `sample_id`/ `donor_id`，按样本汇总后再做条件比较；不能把细胞数当作生物学重复。
+
+foundation model 的输出用于候选状态、标签迁移或任务预测时，应和 PCA/经典整合/样本级统计 baseline 并列。它们不能单独证明 STAT3、NF-κB、SAA、S100A8/A9 或 LCN2 的因果机制。
+
