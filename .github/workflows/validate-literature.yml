@@ -1,0 +1,20 @@
+name: validate-literature
+
+on:
+  push:
+    paths:
+      - "data/**"
+      - "scripts/validate_literature.R"
+  pull_request:
+    paths:
+      - "data/**"
+      - "scripts/validate_literature.R"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+      - name: Validate metadata tables
+        run: Rscript scripts/validate_literature.R
