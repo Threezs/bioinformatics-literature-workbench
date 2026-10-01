@@ -8,7 +8,7 @@ pmid: 40082610
 
 ## Takeaway
 
-Feature-selection choices interact with the integration method and the query task. The useful result is a benchmark-aware choice of HVG, batch-aware HVG or lineage-specific markers, rather than a universal gene count.
+Feature-selection choices interact with the integration method and the query task. The useful result is a benchmark-aware feature strategy for integration and query tasks, rather than a universal gene count. The catalog's lightweight R helper is a transparent variance/effect baseline; formal HVG modeling should use scran/Seurat or the official benchmark workflow.
 
 ## Input and output
 
@@ -19,9 +19,9 @@ Feature-selection choices interact with the integration method and the query tas
 ## Official material
 
 - DOI: https://doi.org/10.1038/s41592-025-02624-3
-- Reproducibility repository: https://github.com/truong128/atlas-feature-selection-benchmark_single_cell_RNA-seq
+- Reproducibility repository: https://github.com/theislab/atlas-feature-selection-benchmark
 - Zenodo: https://doi.org/10.5281/zenodo.13995812
-- Turnkey entry: R/02_feature_selection_benchmark.R.
+- Turnkey entry: R/02_feature_selection_benchmark.R (baseline helper; formal benchmark integration remains a separate step).
 
 ## Limitation
 
