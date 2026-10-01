@@ -78,3 +78,13 @@ config/
 
 这个仓库用于研究记录和证据追踪，不替代系统综述注册、同行评议或正式数据管理计划。对于临床结论、动物实验结论和小样本组学结果，始终保留研究设计、样本量和局限性。
 
+## 近期方法专题
+
+近期的 Nature Methods 和相关方法论文已登记到 data/papers.csv、references/references.bib 和 literature/notes/。可直接运行的 R/Python 入口集中在 [nature-methods-bioinformatics-catalog](https://github.com/Threezs/nature-methods-bioinformatics-catalog)，覆盖：
+
+- 单细胞计数变换和 feature selection；
+- CellRank 2 轨迹/命运、多视图分析；
+- Bambu 长读长转录本发现和 satuRn transcript usage；
+- scGPT、scFoundation、Nicheformer、Monod 和 SATURN 的受控 manifest。
+
+阅读这些方法时，先记录输入契约、实验单位、版本和官方代码，再把 benchmark 结果与自己的物种、组织、平台和样本量分开判断。专题综合见 literature/reviews/recent_methods_2023_2025.qmd。
