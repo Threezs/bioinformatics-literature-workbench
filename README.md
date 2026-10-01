@@ -85,6 +85,6 @@ config/
 - 单细胞计数变换和 feature selection；
 - CellRank 2 轨迹/命运、多视图分析；
 - Bambu 长读长转录本发现和 satuRn transcript usage；
-- scGPT、scFoundation、Nicheformer、Monod 和 SATURN 的受控 manifest。
+- scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 的受控 manifest。
 
 阅读这些方法时，先记录输入契约、实验单位、版本和官方代码，再把 benchmark 结果与自己的物种、组织、平台和样本量分开判断。专题综合见 literature/reviews/recent_methods_2023_2025.qmd。
