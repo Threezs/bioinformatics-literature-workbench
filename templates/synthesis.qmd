@@ -1,0 +1,43 @@
+---
+title: "{{TOPIC}} synthesis"
+format:
+  html:
+    toc: true
+    code-fold: true
+bibliography: ../references/references.bib
+---
+
+# 主题定义
+
+- 主题：
+- 研究范围：
+- 纳入标准：
+- 排除标准：
+- 截止日期：
+
+# 机制链条
+
+用“刺激 → 细胞/分子 → 中间过程 → 表型”的顺序组织证据，避免把相关性直接写成因果关系。
+
+# 证据矩阵
+
+读取 `data/claims.csv` 后按主题筛选。
+
+~~~{r}
+#| echo: true
+claims <- read.csv("../data/claims.csv", check.names = FALSE)
+subset(claims, grepl("{{TOPIC_KEYWORD}}", relevance_to_projects, ignore.case = TRUE))
+~~~
+
+# 争议与空白
+
+| 问题 | 支持证据 | 反对证据 | 目前判断 | 下一步验证 |
+|---|---|---|---|---|
+|  |  |  |  |  |
+
+# 对研究设计的启发
+
+- 样本和对照：
+- 需要的干预实验：
+- 可用的公开数据集：
+- 推荐的组学分析：
