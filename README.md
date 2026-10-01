@@ -120,3 +120,7 @@ config/
 
 - **P018 / PHLOWER**：用多模态单细胞数据和 Hodge 分解处理复杂、多分支分化轨迹；阅读时固定共享 cell ID、root/direction、模态预处理和 branch stability。
 - 入口：`python/15_phlower_manifest.py`，当前状态为 `manifest-only`；分支树和候选调控因子必须配独立验证。
+## 2025 spatial data infrastructure
+
+- **P019 / SpatialData**：把不同平台的空间组学表、图像、labels、shapes、points 和坐标变换组织成可互操作的数据框架；阅读时固定元素类型、坐标系、单位、变换链、平台 reader 和存储格式。
+- 入口：`python/16_spatialdata_manifest.py`，当前状态为 `manifest-only`；它不自动修复 segmentation、registration 或组织混杂。
