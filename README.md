@@ -91,3 +91,14 @@ config/
 | foundation model、空间和跨物种 | python/02–07 | manifest-only |
 
 文献阅读时，先记录输入契约、实验单位、软件/权重版本和 benchmark，再决定方法是否适合自己的小鼠 APAP、IR 或 CRLM 数据。对于 CellRank、embedding 和 niche 输出，阅读卡片要继续追踪 sample/donor 汇总和独立验证。完整的功能选择说明见 catalog 的 docs/function_map.md，近期论文综合见 literature/reviews/recent_methods_2023_2026.qmd。
+
+
+## 2026 方法目录更新
+
+| 新增条目 | 功能 | 阅读时先问什么 |
+|---|---|---|
+| Mellon (P012) | cell-state density、时间连续化 | density 基于哪一种 representation，是否保留 sample/time 信息？ |
+| MISO (P013) | 多模态空间组学整合 | 所有模态是否共享 spot/cell key、坐标和预处理版本？ |
+| SCMMIB (P014) | paired/unpaired/mosaic 整合 benchmark | 当前任务和评价指标是什么，是否把 benchmark 排名误读成普适结论？ |
+
+以上条目与 `catalog.csv` 的 `execution_mode` 对齐；manifest 生成只说明输入契约已记录，不等于官方模型已完成推理。

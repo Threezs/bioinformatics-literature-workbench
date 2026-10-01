@@ -1,0 +1,32 @@
+---
+title: "P014 — SCMMIB multimodal integration benchmark"
+format: gfm
+---
+
+## Primary record
+
+- DOI: https://doi.org/10.1038/s41592-025-02737-9
+- PMID: 40640531
+- Article: *Benchmarking single-cell multi-modal data integrations*
+- Benchmark code: https://github.com/bm2-lab/SCMMI_Benchmark
+- Pipeline: https://github.com/bm2-lab/SCMMIB_pipeline
+- Catalog entry: `SCMMIB_2025`
+- Local entry: `python/11_scmmib_manifest.py`
+
+## What problem does it address?
+
+SCMMIB evaluates multimodal integration across paired, unpaired and mosaic tasks using accuracy, robustness and scalability measurements. It is an evaluation resource, not a new universal integrator.
+
+## Minimal input contract
+
+1. A dataset/task manifest specifying modality pairing and the task type.
+2. The exact preprocessing and train/test split used by the benchmark pipeline.
+3. Runtime, memory and GPU records for scalability comparisons.
+
+## Interpretation boundary
+
+A method ranking is conditional on task, modality, dataset and metric. Use the benchmark to choose candidates, then validate the selected method on the user's own platform and biological replicates.
+
+## Reproduction status
+
+The personal catalog currently records the task and dataset manifest only. The official benchmark pipeline must be run in its pinned environment before quoting metric values.

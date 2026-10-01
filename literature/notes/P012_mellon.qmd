@@ -1,0 +1,31 @@
+---
+title: "P012 — Mellon cell-state density"
+format: gfm
+---
+
+## Primary record
+
+- DOI: https://doi.org/10.1038/s41592-024-02302-w
+- Article: *Quantifying cell-state densities in single-cell phenotypic landscapes using Mellon*
+- Official code: https://github.com/settylab/Mellon
+- Documentation: https://mellon.readthedocs.io/en/latest/
+- Catalog entry: `MELLON_2024`
+- Local entry: `python/09_mellon_template.py`
+
+## What problem does it address?
+
+Mellon estimates cell-state density in a high-dimensional single-cell representation and can interpolate density over time. It is useful for locating high-density stable regions and low-density transitional regions, including across multiple single-cell modalities.
+
+## Minimal input contract
+
+1. A cell-by-feature representation with a fixed representation method and parameter record.
+2. Optional time, sample, donor and condition metadata.
+3. A baseline density calculation and a plan for sensitivity to representation/neighborhood choices.
+
+## Interpretation boundary
+
+A density score describes occupancy in the chosen representation. It is not a lineage probability, a cell fraction, or a causal transition rate. Summarize density and any downstream gene-change scores by sample/donor before comparing conditions.
+
+## Reproduction status
+
+The personal catalog currently generates an auditable manifest only. The official Mellon environment, package version, representation, parameters and output checks must be fixed before calling the result reproduced.

@@ -1,0 +1,31 @@
+---
+title: "P013 — MISO multimodal spatial omics"
+format: gfm
+---
+
+## Primary record
+
+- DOI: https://doi.org/10.1038/s41592-024-02574-2
+- PMID: 39815104
+- Article: *Resolving tissue complexity by multimodal spatial omics modeling with MISO*
+- Official code: https://github.com/kpcoleman/miso
+- Catalog entry: `MISO_2025`
+- Local entry: `python/10_miso_manifest.py`
+
+## What problem does it address?
+
+MISO integrates and clusters multimodal spatial omics data, including transcriptomics with histology, chromatin/transcriptome measurements, spatial CITE-seq and spatial metabolomics examples.
+
+## Minimal input contract
+
+1. Two or more modalities with a shared spot/cell identifier.
+2. Explicit coordinate convention and aligned image/feature extraction, when used.
+3. A pinned Python 3.7 environment and Git-LFS weights, with preprocessing and modality QC recorded.
+
+## Interpretation boundary
+
+Integrated clusters are candidate spatial domains. They do not by themselves prove cell-cell signaling, causal tissue organization or a disease mechanism. Compare with modality-specific clustering and spatial neighborhood summaries.
+
+## Reproduction status
+
+The personal catalog currently creates a manifest and checks paths. It does not download Git-LFS weights or claim that the official MISO tutorial has been rerun.
