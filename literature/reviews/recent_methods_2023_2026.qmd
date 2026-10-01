@@ -63,3 +63,12 @@ SACCELERATOR is an evaluation and consensus layer rather than a single clusterin
 | Can spatial domains and tissue architecture transfer across panels, tissues and technologies? | P022 | python/19_novae_manifest.py |
 
 Novae is a graph-based foundation model for spatial transcriptomics. Its repository describes spot- or cell-level domain assignments, native batch-effect correction, spatially variable gene/pathway analysis and tissue-slide architecture analysis. Read it together with P019 SpatialData: first standardize elements, coordinates, units and transforms, then fix gene-panel coverage, batch labels and held-out sections before comparing domain maps. A domain score or SVG/pathway list remains a model-dependent summary until marker, image or independent molecular validation is available.
+
+
+## Controlled simulation for multimodal and spatial benchmarks
+
+| Question | Method record | Practical entry |
+|---|---|---|
+| Can an analysis method recover a declared signal under controlled multi-omics, velocity, spatial, GRN and batch truth? | P023 | python/20_scmultisim_manifest.py |
+
+scMultiSim adds a missing layer to the catalog: known truth for stress-testing integration, RNA velocity, GRN inference and spatial interaction methods. Define the cell tree, GRN, interaction and technical-noise settings before running a benchmark, include a negative control, and vary one factor at a time. Its R/Bioconductor implementation is useful for the R-first workflow, but rankings remain conditional on the generative assumptions and must be checked on empirical data.
