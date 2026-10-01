@@ -78,13 +78,16 @@ config/
 
 这个仓库用于研究记录和证据追踪，不替代系统综述注册、同行评议或正式数据管理计划。对于临床结论、动物实验结论和小样本组学结果，始终保留研究设计、样本量和局限性。
 
-## 近期方法专题
+## 按功能使用近期方法
 
-近期的 Nature Methods 和相关方法论文已登记到 data/papers.csv、references/references.bib 和 literature/notes/。可直接运行的 R/Python 入口集中在 [nature-methods-bioinformatics-catalog](https://github.com/Threezs/nature-methods-bioinformatics-catalog)，覆盖：
+近期方法已经按科研问题接入 [nature-methods-bioinformatics-catalog](https://github.com/Threezs/nature-methods-bioinformatics-catalog)：
 
-- 单细胞计数变换和 feature selection；
-- CellRank 2 轨迹/命运、多视图分析；
-- Bambu 长读长转录本发现和 satuRn transcript usage；
-- scGPT、scFoundation、Nicheformer、Monod、SATURN 和 UCE 的受控 manifest。
+| 功能 | 入口 | 运行状态 |
+|---|---|---|
+| 输入审计 | R/00_input_audit.R / python/00_input_audit.py | smoke-tested |
+| 单细胞变换与特征排序 | R/01_single_cell_transformations.R / R/02_feature_selection_benchmark.R | baseline-function |
+| 轨迹与命运 | python/01_cellrank2_template.py | runtime-required |
+| 长读长与 DTU | R/03_bambu_long_read.R / R/04_satuRn_dtu.R | reference/transcript-input-required |
+| foundation model、空间和跨物种 | python/02–07 | manifest-only |
 
-阅读这些方法时，先记录输入契约、实验单位、版本和官方代码，再把 benchmark 结果与自己的物种、组织、平台和样本量分开判断。专题综合见 literature/reviews/recent_methods_2023_2025.qmd。
+文献阅读时，先记录输入契约、实验单位、软件/权重版本和 benchmark，再决定方法是否适合自己的小鼠 APAP、IR 或 CRLM 数据。对于 CellRank、embedding 和 niche 输出，阅读卡片要继续追踪 sample/donor 汇总和独立验证。完整的功能选择说明见 catalog 的 docs/function_map.md，近期论文综合见 literature/reviews/recent_methods_2023_2026.qmd。
