@@ -1,0 +1,37 @@
+---
+title: "Recent bioinformatics methods: 2023–2025"
+format: gfm
+---
+
+# Recent bioinformatics methods: 2023–2025
+
+This review is a navigation note for the records in data/papers.csv. It is intentionally method-centered: every claim should be checked against the primary paper, its official repository and the input contract in the methods catalog.
+
+## Selection map
+
+| Question | Method record | Practical entry |
+|---|---|---|
+| How should single-cell counts be transformed? | P001 | R/01_single_cell_transformations.R |
+| How many features should be used for integration/query? | P005 | R/02_feature_selection_benchmark.R |
+| How should fate and trajectory probabilities be modeled? | P002 | python/01_cellrank2_template.py |
+| How can long reads improve transcript discovery? | P006 | R/03_bambu_long_read.R |
+| When is transcript usage the endpoint? | P010 | R/04_satuRn_dtu.R |
+| How can a model encode cell state? | P003, P004 | python/02_scgpt_embedding_template.py; python/03_scFoundation_embedding_template.py |
+| How can spatial context be transferred? | P009 | python/04_nicheformer_template.py |
+| How can nascent and mature RNA be modeled? | P008 | python/05_monod_template.py |
+| How can multiple species be aligned? | P007 | python/06_saturn_template.py |\n| How can new cells be embedded without fine-tuning? | P011 | python/07_uce_manifest.py |
+
+## Reproducibility checklist
+
+1. Freeze the paper DOI, official repository, commit/tag and checkpoint URL.
+2. Record the organism, tissue, assay, experimental unit and count convention.
+3. Test the smallest mock input before using a full dataset.
+4. Preserve the complete output table, software versions, command line and input hashes.
+5. Compare foundation-model outputs with an interpretable baseline.
+6. Keep exploratory predictions separate from claims supported by independent biological evidence.
+
+## Project links
+
+- Methods catalog: https://github.com/Threezs/nature-methods-bioinformatics-catalog
+- RNA-seq template: https://github.com/Threezs/rnaseq-analysis-template
+- Evidence notebook: https://github.com/Threezs/research-evidence-notebook
