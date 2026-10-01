@@ -1,0 +1,12 @@
+paper_id,functional_category,research_question,entrypoint,execution_mode,baseline_to_compare,evidence_note
+P001,preprocessing,How should single-cell counts be transformed?,R/01_single_cell_transformations.R,baseline-function,log1p-CPM or documented alternative,transformation changes geometry
+P005,preprocessing,Which features should be selected for atlas/query?,R/02_feature_selection_benchmark.R,baseline-and-benchmark-integration,scran/Seurat or official benchmark,feature strategy depends on task
+P002,trajectory,How should fate probabilities be estimated?,python/01_cellrank2_template.py,runtime-required,classical trajectory plus sample-level summary,cell-level output is not independent replication
+P006,transcriptomics,Can long reads discover novel transcripts?,R/03_bambu_long_read.R,reference-required,gene-level quantification,reference files must match genome alignment
+P010,transcriptomics,Does transcript usage differ?,R/04_satuRn_dtu.R,transcript-input-required,gene-level DE,requires biological replicates and transcript annotation
+P003,foundation_models,Can a pretrained model support annotation or embedding?,python/02_scgpt_embedding_template.py,manifest-only,PCA/nearest-neighbor,checkpoint and task license must be recorded
+P004,foundation_models,Can large-scale pretraining support embedding or drug response?,python/03_scFoundation_embedding_template.py,manifest-only,PCA/scVI,model output needs held-out evaluation
+P009,spatial_context,Can tissue context support niche prediction?,python/04_nicheformer_template.py,manifest-only,traditional neighborhood statistics,domain shift requires validation
+P008,transcription_dynamics,Can nascent/mature counts support stochastic kinetics?,python/05_monod_template.py,manifest-only,official Monod examples,manifest is not a fitted model
+P007,cross_species,Can cell states be aligned across species?,python/06_saturn_template.py,manifest-only,ortholog/reference mapping,protein coverage and cross-species QC
+P011,foundation_models,Can new cells be embedded zero-shot?,python/07_uce_manifest.py,manifest-only,reference mapping or PCA,checkpoint and vocabulary coverage must be audited
