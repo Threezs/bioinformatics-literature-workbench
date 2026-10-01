@@ -48,3 +48,4 @@ For CellRank, Mellon, embeddings and niche outputs, retain `sample_id`/`donor_id
 - Methods catalog: https://github.com/Threezs/nature-methods-bioinformatics-catalog
 - RNA-seq template: https://github.com/Threezs/rnaseq-analysis-template
 - Evidence notebook: https://github.com/Threezs/research-evidence-notebook
+| How can spatial omics elements and coordinate systems stay interoperable? | P019 | python/16_spatialdata_manifest.py |
