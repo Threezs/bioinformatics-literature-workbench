@@ -1,0 +1,2 @@
+dataset_id,accession,repository,species,condition,tissue,assay,n_samples,design,raw_url,processed_url,license,download_date,local_path,status,notes
+D001,GSEXXXXX,GEO,Mus musculus,APAP vs control,liver,bulk RNA-seq,7,case-control,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSEXXXXX,,,,"data/raw/GSEXXXXX",planned,Replace accession and metadata
