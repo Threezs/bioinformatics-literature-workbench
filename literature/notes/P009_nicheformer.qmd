@@ -1,0 +1,28 @@
+---
+paper_id: P009
+doi: 10.1038/s41592-025-02814-z
+pmid: 41168487
+---
+
+# Nicheformer
+
+## Takeaway
+
+Nicheformer is a foundation model for single-cell and spatial omics that can transfer representations across spatial context and tissue neighborhoods.
+
+## Input and output
+
+- Input: spatial transcriptomics or dissociated single-cell data plus a compatible checkpoint.
+- Output: niche embeddings and spatial-context predictions.
+- Record: platform, tissue, coordinate system, preprocessing, checkpoint and external validation set.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-025-02814-z
+- Code: https://github.com/theislab/nicheformer
+- Model card: https://huggingface.co/collections/theislab/nicheformer
+- Turnkey entry: python/04_nicheformer_template.py.
+
+## Limitation
+
+Domain shift across tissues and platforms can be substantial. Treat predictions as a research branch until validated with spatial or molecular evidence.
