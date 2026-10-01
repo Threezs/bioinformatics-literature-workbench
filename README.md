@@ -128,3 +128,7 @@ config/
 
 - **P020 / scikit-bio**：覆盖序列、feature table、距离、多样性、分类、taxonomy 和系统发育操作；阅读时固定输入格式、序列/样本 ID、metadata、距离/树约定和统计设计。
 - 入口：`python/17_scikit_bio_manifest.py`，当前状态为 `manifest-only`；通用库调用不等于实验设计或生物学结论已经成立。
+## 2026 空间聚类共识扩展
+
+- **P021 / SACCELERATOR**：把空间感知聚类方法、跨平台数据集、空间指标和专家反馈放在可扩展框架中；阅读时固定方法版本、数据集 split、坐标、ARI/NMI、CHAOS/PAS/entropy 和 expert-review protocol。
+- 入口：`python/18_saccelerator_manifest.py`，当前状态为 `manifest-only`；手工标签不是自动真值，共识结果要回到原始图像和独立生物学验证。
