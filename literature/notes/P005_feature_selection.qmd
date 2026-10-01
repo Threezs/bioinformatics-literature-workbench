@@ -1,0 +1,28 @@
+---
+paper_id: P005
+doi: 10.1038/s41592-025-02624-3
+pmid: 40082610
+---
+
+# Feature selection methods for scRNA-seq integration and querying
+
+## Takeaway
+
+Feature-selection choices interact with the integration method and the query task. The useful result is a benchmark-aware choice of HVG, batch-aware HVG or lineage-specific markers, rather than a universal gene count.
+
+## Input and output
+
+- Input: raw counts, batch labels and, when relevant, lineage or reference labels.
+- Output: selected feature lists plus integration/query evaluation metrics.
+- Record: number of features, detection threshold, batch rule and downstream metric.
+
+## Official material
+
+- DOI: https://doi.org/10.1038/s41592-025-02624-3
+- Reproducibility repository: https://github.com/truong128/atlas-feature-selection-benchmark_single_cell_RNA-seq
+- Zenodo: https://doi.org/10.5281/zenodo.13995812
+- Turnkey entry: R/02_feature_selection_benchmark.R.
+
+## Limitation
+
+The benchmark does not remove the need to match the feature strategy to tissue, sample size, integration method and query goal.
