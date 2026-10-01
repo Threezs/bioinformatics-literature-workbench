@@ -1,0 +1,2 @@
+paper_id,doi,pmid,title,year,journal,first_author,species,model,tissue,assay,design,accession,tags,status,priority,read_date,notes_path,project_links
+P001,10.0000/example-doi,00000000,Example record - replace with a real paper,2026,Example Journal,Example,Mus musculus,acute liver injury,liver,bulk RNA-seq,case-control,GSEXXXXX,"APAP;RNA-seq",inbox,medium,,literature/notes/P001_example.qmd,"APAP;STAT3"
