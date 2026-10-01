@@ -1,0 +1,69 @@
+---
+title: "P021 — SACCELERATOR"
+format: gfm
+---
+
+# Beyond benchmarking: an expert-guided consensus approach to spatially aware clustering
+
+- DOI: [10.1038/s41592-026-03194-8](https://doi.org/10.1038/s41592-026-03194-8)
+- Official repository: <https://github.com/SpatialHackathon/SACCELERATOR>
+- Catalog entry: `SACCELERATOR_2026`
+- Local entrypoint: `python/18_saccelerator_manifest.py`
+- Current readiness: `manifest-only`
+
+## Why this belongs in the workbench
+
+Spatial-domain clustering is often evaluated against manual anatomical labels as if those labels were perfect ground truth. SACCELERATOR provides a community framework for standardizing data formatting, method integration and metric evaluation across spatially aware clustering methods and diverse platforms, then adds a consensus and expert-review layer for method disagreement.
+
+The useful contribution for a project is the evaluation protocol: it makes the dataset, method, metric and reviewer decisions explicit. It is not a replacement clustering model that should be applied without a baseline.
+
+## Input contract
+
+Record:
+
+1. platform, tissue and dataset split;
+2. spatial coordinates, units and section identifiers;
+3. method names, versions/commits and environment;
+4. non-spatial metrics such as ARI/NMI and spatial metrics such as CHAOS/PAS/spot entropy;
+5. whether labels are manual, expert-reviewed, simulated or independent;
+6. the consensus rule and the reviewers who inspected disagreement/high-entropy regions.
+
+The catalog manifest checks paths and requires at least one spatially aware metric so that a benchmark cannot silently collapse into a label-only score.
+
+```bash
+python python/18_saccelerator_manifest.py \
+  --datasets data/real/spatialdata.zarr data/real/cluster_labels.csv \
+  --methods method_a method_b consensus \
+  --metrics ARI CHAOS PAS spot_entropy consensus_entropy \
+  --expert-labels data/real/expert_labels.csv \
+  --platform Visium \
+  --output results/saccelerator_manifest.json
+```
+
+For a minimal smoke test:
+
+```bash
+python python/18_saccelerator_manifest.py \
+  --datasets data/mock/spatialdata_table.csv \
+  --methods baseline consensus \
+  --metrics ARI CHAOS PAS spot_entropy \
+  --platform synthetic
+```
+
+## Baseline and validation
+
+- compare at least one spatially agnostic clustering baseline with a spatially aware method;
+- report results by platform, tissue and dataset rather than a single pooled score;
+- render the original tissue image and cluster map for high-disagreement regions;
+- test sensitivity to coordinate transforms, resolution, neighborhood radius and preprocessing;
+- keep manual labels, expert adjudication and independent molecular evidence as separate columns in the evidence notebook.
+
+## Interpretation boundary
+
+A high ARI or spatial score can reflect label conventions, tissue structure or a favorable split. A consensus representation summarizes agreement; it does not prove that a domain is biologically causal or that a cell-cell interaction exists.
+
+## Reading output
+
+- Claim to retain: the selected methods and consensus protocol show a documented pattern of agreement/disagreement under the recorded datasets and metrics.
+- Claim not to retain: manual labels or consensus clusters are automatically ground truth.
+- Next validation: inspect disagreement regions with tissue experts and validate candidate boundaries or programs using independent molecular, imaging or perturbation evidence.
